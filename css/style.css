@@ -1,0 +1,362 @@
+body {
+  background-color: #324E5C;
+}
+html {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+  supported by Chrome and Opera */
+}
+@media only screen and (max-width: 490px), screen and (max-height: 600px) {
+  .game-title {
+    font-size: 22px !important;
+    padding: 8px !important;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .game-title {
+    display: none;
+  }
+  .controls-row-1 {
+    position: relative;
+    margin-top: 30px !important;
+  }
+}
+@media only screen and (max-height: 300px) {
+  .game-title {
+    display: none;
+  }
+  .controls-row-1 {
+    position: relative;
+    margin-top: 30px !important;
+  }
+}
+@media only screen and (max-width: 630px), screen and (max-height: 600px) {
+  .simon {
+    width: 75vw;
+    height: 75vw;
+    border: 4vw #2A2F35 solid;
+  }
+  .game-control {
+    width: 36vw;
+    height: 36vw;
+  }
+  .controls-row-1 {
+    width: 160px !important;
+  }
+  .controls-row-1 .counter-container {
+    height: 40px;
+  }
+  .controls-row-1 .counter-container .counter-display {
+    padding: 0 !important;
+    font-size: 20px !important;
+  }
+  .controls-row-1 .counter-container .counter-label {
+    font-size: 14px !important;
+  }
+  .controls-row-1 .button-label {
+    font-size: 14px !important;
+  }
+  .controls-row-1 .button-container {
+    margin: 0 5% !important;
+  }
+  .controls-row-1 .button-container button {
+    width: 25px !important;
+    height: 25px !important;
+    border: 4px #707B8A solid !important;
+  }
+  .controls-row-1 #start-button {
+    margin-top: 63% !important;
+  }
+  .controls-row-1 #strict-indicator {
+    width: 4px !important;
+    height: 4px !important;
+    transform: translateX(-3.5px) translateY(6px) !important;
+  }
+  .controls-row-1 #strict-button {
+    margin-top: 28%;
+  }
+  .power-switch {
+    /* The switch - the box around the slider */
+    /* Hide default HTML checkbox */
+    /* The slider */
+  }
+  .power-switch .label {
+    font-size: 14px !important;
+  }
+  .power-switch .switch {
+    position: relative;
+    display: inline-block;
+    top: 9px;
+    margin: 0 4px;
+    width: 40px !important;
+    height: 25px !important;
+  }
+  .power-switch .switch input {
+    display: none;
+  }
+  .power-switch .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #2A2F35;
+    border-radius: 6px;
+    -webkit-transition: .1s;
+    transition: .1s;
+  }
+  .power-switch .slider:before {
+    position: absolute;
+    content: "";
+    height: 18px !important;
+    width: 18px !important;
+    left: 3.75px !important;
+    bottom: 3px !important;
+    background-color: #2996BD;
+    border-radius: 3px !important;
+    -webkit-transition: .1s;
+    transition: .1s;
+  }
+  .power-switch input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  .power-switch input:checked + .slider:before {
+    -webkit-transform: translateX(15px) !important;
+    -ms-transform: translateX(15px) !important;
+    transform: translateX(15px) !important;
+  }
+}
+@media only screen and (min-width: 630px) {
+  .simon {
+    width: 75vh;
+    height: 75vh;
+    border: 4vh #2A2F35 solid;
+  }
+  .game-control {
+    width: 36vh;
+    height: 36vh;
+  }
+}
+.on {
+  background-color: #FF6667 !important;
+  box-shadow: 0px 0px 16px #FF6667;
+}
+.active-tile {
+  transition: box-shadow 0.05s ease;
+  box-shadow: 0px 0px 250px white inset;
+}
+.inactive-tile {
+  transition: background 1s ease;
+}
+.simon {
+  min-width: 300px !important;
+  min-height: 300px !important;
+  background-color: #2A2F35;
+  margin: 10vh auto;
+  border-radius: 100%;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+}
+.simon button {
+  outline: none !important;
+  width: 50%;
+  height: 50%;
+  float: left;
+  border: none;
+  cursor: pointer;
+}
+.simon #tile-1 {
+  background-color: #45B09C;
+  border-right: 2.5vw #2A2F35 solid;
+  border-bottom: 2.5vw #2A2F35 solid;
+}
+.simon #tile-2 {
+  background-color: #F73955;
+  border-left: 2.5vw #2A2F35 solid;
+  border-bottom: 2.5vw #2A2F35 solid;
+}
+.simon #tile-3 {
+  background-color: #EFC94C;
+  border-right: 2.5vw #2A2F35 solid;
+  border-top: 2.5vw #2A2F35 solid;
+}
+.simon #tile-4 {
+  background-color: #2996BD;
+  border-left: 2.5vw #2A2F35 solid;
+  border-top: 2.5vw #2A2F35 solid;
+}
+@media only screen and (min-width: 630px) {
+  .simon #tile-1 {
+    border-right: 2.5vh #2A2F35 solid;
+    border-bottom: 2.5vh #2A2F35 solid;
+  }
+  .simon #tile-2 {
+    border-left: 2.5vh #2A2F35 solid;
+    border-bottom: 2.5vh #2A2F35 solid;
+  }
+  .simon #tile-3 {
+    border-right: 2.5vh #2A2F35 solid;
+    border-top: 2.5vh #2A2F35 solid;
+  }
+  .simon #tile-4 {
+    border-left: 2.5vh #2A2F35 solid;
+    border-top: 2.5vh #2A2F35 solid;
+  }
+}
+.game-control {
+  min-width: 150px !important;
+  min-height: 150px !important;
+  background-color: #F3ECBE;
+  box-shadow: 0 0 16px 4px rgba(0, 0, 0, 0.2) inset;
+  border-radius: 100%;
+  border: 3.75vw #2A2F35 solid;
+  overflow: hidden;
+  position: relative;
+  top: -79%;
+  color: #304c55;
+}
+@media only screen and (min-width: 630px) {
+  .game-control {
+    border: 3.75vh #2A2F35 solid;
+  }
+}
+.game-control .game-title {
+  background-color: #A3C493;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+  padding: 10% 0 5% 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 40px;
+  color: #FFFBE6;
+}
+.game-control .controls-row-1 {
+  display: inline-block;
+  width: 215px;
+  margin: 0 auto;
+}
+.game-control .controls-row-1 .counter-container {
+  float: left;
+  margin-left: 10%;
+  margin-top: 6%;
+}
+.game-control .controls-row-1 .counter-container .counter-display {
+  font-family: "Roboto Light", sans-serif;
+  font-size: 26px;
+  width: 35px;
+  padding: 0;
+  margin: 0;
+  margin-top: 10%;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2) inset;
+  text-align: center;
+  border: 3px #2A2F35 solid;
+  padding: 0 7px;
+  border-radius: 6px;
+  background-color: #E0DAAF;
+  color: #214258;
+}
+.game-control .controls-row-1 .counter-container .counter-label {
+  font-family: "Roboto Light", sans-serif;
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+}
+.game-control .controls-row-1 .button-label {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto Light", sans-serif;
+  font-size: 16px;
+}
+.game-control .controls-row-1 .button-container {
+  float: left;
+  margin: 7% 7%;
+  margin-bottom: 0;
+}
+.game-control .controls-row-1 .button-container button {
+  width: 30px;
+  height: 30px;
+  border: 4px #7e8896 solid;
+  border-radius: 100%;
+}
+.game-control .controls-row-1 #start-button {
+  margin-left: 10%;
+  margin-top: 40%;
+  background-color: #F05F60;
+}
+.game-control .controls-row-1 #strict-indicator {
+  width: 8px;
+  height: 8px;
+  transform: translateX(-4px) translateY(-3px);
+  background-color: #D9B8B8;
+  border-radius: 100%;
+  border: 1px #7e8896 solid;
+}
+.game-control .controls-row-1 #strict-button {
+  background-color: #EFB04C;
+}
+.game-control .power-switch {
+  margin: 0;
+  padding: 0;
+  /* The switch - the box around the slider */
+  /* Hide default HTML checkbox */
+  /* The slider */
+}
+.game-control .power-switch .label {
+  font-family: "Roboto Light", sans-serif;
+  font-size: 15px;
+  display: inline-block;
+  line-height: 10px;
+}
+.game-control .power-switch .switch {
+  position: relative;
+  display: inline-block;
+  top: 9px;
+  margin: 0 4px;
+  width: 55px;
+  height: 30px;
+}
+.game-control .power-switch .switch input {
+  display: none;
+}
+.game-control .power-switch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #2A2F35;
+  border-radius: 6px;
+  -webkit-transition: .1s;
+  transition: .1s;
+}
+.game-control .power-switch .slider:before {
+  position: absolute;
+  content: "";
+  height: 21px;
+  width: 25px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #2996BD;
+  border-radius: 6px;
+  -webkit-transition: .1s;
+  transition: .1s;
+}
+.game-control .power-switch input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+.game-control .power-switch input:checked + .slider:before {
+  -webkit-transform: translateX(22px);
+  -ms-transform: translateX(22px);
+  transform: translateX(22px);
+}

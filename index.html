@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Simon</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+  <div class="simon-container" align="center">
+  
+  
+  <div class="simon" align="center">
+    <button class="tile" id="tile-1"></button>
+    <button class="tile" id="tile-2"></button>
+    <button class="tile" id="tile-3"></button>
+    <button class="tile" id="tile-4"></button>
+
+    <div class="game-control">
+      <div class="game-title">Simon</div>
+      
+      <span class="controls-row-1">
+        <div class="counter-container">
+          <p class="counter-display">--</p>
+          <p class="counter-label">Count</p>
+        </div>
+        
+        <div class="button-container" align="center">
+          <button id="start-button"></button>
+          <br>
+          <p class="button-label">Start</p>
+        </div>
+        
+        <div class="button-container" align="center">
+          <div id="strict-indicator"></div>
+          <button id="strict-button"></button>
+          <br>
+          <p class="button-label">Strict</p>
+        </div>
+      </span>
+      
+      <br>
+      
+      <span class="power-switch">
+        <p class="label">Off</p>
+        <label id="power-switch" class="switch">
+          <input id="power-switch-input" type="checkbox" checked>
+          <div class="slider"></div>
+        </label>
+        <p class="label">On</p>
+      </span>
+      
+    </div>
+  </div>
+
+  
+</div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
+
+    <script src="js/index.js"></script>
+
+</body>
+</html>

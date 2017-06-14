@@ -1,0 +1,432 @@
+@background-color: #324E5C;
+@background-game-control: #F3ECBE;
+@game-control-header: #A3C493;
+@border-color: #2A2F35; 
+
+@green: #45B09C;
+@red: #F73955;
+@yellow: #EFC94C;
+@blue: #2996BD;
+
+
+body {
+  background-color: @background-color;
+}
+
+html {
+  // Disable text highlighting 
+  // credit -> https://stackoverflow.com/questions/826782/how-to-disable-text-selection-highlighting-using-css
+  
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+  supported by Chrome and Opera */
+}
+
+// Very Small screens
+@media only screen and (max-width: 490px), screen and (max-height: 600px) {
+  .game-title{
+    font-size: 22px !important; 
+    padding: 8px !important;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .game-title{ display: none; }
+  .controls-row-1{ 
+    position: relative;
+    margin-top: 30px !important;
+  }
+  
+}
+@media only screen and (max-height: 300px){
+  .game-title{ display: none; }
+  .controls-row-1{ 
+    position: relative;
+    margin-top: 30px !important;
+  }
+}
+
+// Small screens
+@media only screen and (max-width: 630px), screen and (max-height: 600px){
+  .simon {
+    width: 75vw;
+    height: 75vw;
+    border: 4vw @border-color solid;
+  }
+
+  .game-control {
+    width: 36vw;
+    height: 36vw;
+  }
+  
+  .controls-row-1 {
+    width: 160px !important;
+
+    .counter-container {
+      height: 40px;
+
+      .counter-display {
+        padding: 0 !important;
+        font-size: 20px !important;
+      }
+      .counter-label {
+        font-size: 14px !important;
+      }
+    }
+
+    .button-label {
+      font-size: 14px !important;
+    }
+
+    @button-border-color: #707B8A;
+    .button-container {
+      margin: 0 5% !important;
+
+      button {
+        width: 25px !important;
+        height: 25px !important;
+        border: 4px @button-border-color solid !important;
+      }
+    }
+
+    #start-button {
+      margin-top: 63% !important;
+    }
+
+    #strict-indicator {
+      width: 4px !important;
+      height: 4px !important;
+      transform: translateX(-3.5px) translateY(6px) !important;
+    }
+
+    #strict-button {
+      margin-top: 28%;
+    }
+  }
+  
+  .power-switch {
+
+    .label {
+      font-size: 14px !important;
+    }
+
+    /* The switch - the box around the slider */
+    // Switch credit -> https://www.w3schools.com/howto/howto_css_switch.asp
+    .switch {
+      position: relative;
+      display: inline-block;
+      top: 9px;
+      margin: 0 4px;
+      width: 40px !important;
+      height: 25px !important;
+    }
+
+    /* Hide default HTML checkbox */
+    .switch input {display:none;}
+
+    /* The slider */
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #2A2F35;
+      border-radius: 6px;
+      -webkit-transition: .1s;
+      transition: .1s;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px !important;
+      width: 18px !important;
+      left: 3.75px !important;
+      bottom: 3px !important;
+      background-color: #2996BD;
+      border-radius: 3px !important;
+      -webkit-transition: .1s;
+      transition: .1s;
+    }
+
+    input:focus + .slider {
+      box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked + .slider:before {
+      -webkit-transform: translateX(15px) !important;
+      -ms-transform: translateX(15px) !important;
+      transform: translateX(15px) !important;
+    }
+  }
+}
+
+// Wide screens
+@media only screen and (min-width: 630px){
+  .simon {
+    width: 75vh;
+    height: 75vh;
+    border: 4vh @border-color solid;
+  }
+  
+  .game-control {
+    width: 36vh;
+    height: 36vh;
+  }
+}
+
+.on {
+  background-color: #FF6667 !important;
+  box-shadow: 0px 0px 16px #FF6667;
+}
+
+.active-tile {
+  transition: box-shadow 0.05s ease;
+  box-shadow: 0px 0px 250px white inset;
+}
+
+.inactive-tile {
+  transition: background 1s ease;
+}
+
+.simon {
+  @border-width: 2.5vw;
+  
+  min-width: 300px !important;
+  min-height: 300px !important;
+  
+  background-color: @border-color;
+  margin: 10vh auto;
+  border-radius: 100%;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+
+  button {
+    outline: none !important;
+    width: 50%;
+    height: 50%;
+    float: left;
+    border: none;
+    cursor: pointer;
+  }
+  
+  #tile-1{
+    background-color: @green;
+    border-right: @border-width @border-color solid;
+    border-bottom: @border-width @border-color solid;
+  }
+  #tile-2{ 
+    background-color: @red;
+    border-left: @border-width @border-color solid;
+    border-bottom: @border-width @border-color solid;
+  }
+  #tile-3{ 
+    background-color: @yellow;
+    border-right: @border-width @border-color solid;
+    border-top: @border-width @border-color solid;
+  }
+  #tile-4{ 
+    background-color: @blue;
+    border-left: @border-width @border-color solid;
+    border-top: @border-width @border-color solid;
+  }
+
+  @media only screen and (min-width: 630px){
+    @border-width: 2.5vh;
+    #tile-1{
+      border-right: @border-width @border-color solid;
+      border-bottom: @border-width @border-color solid;
+    }
+    #tile-2{ 
+      border-left: @border-width @border-color solid;
+      border-bottom: @border-width @border-color solid;
+    }
+    #tile-3{ 
+      border-right: @border-width @border-color solid;
+      border-top: @border-width @border-color solid;
+    }
+    #tile-4{ 
+      border-left: @border-width @border-color solid;
+      border-top: @border-width @border-color solid;
+    }
+  }
+}
+
+.game-control {
+  min-width: 150px !important;
+  min-height: 150px !important;
+  background-color: @background-game-control;
+  box-shadow: 0 0 16px 4px rgba(0,0,0,0.20) inset;
+  
+  border-radius: 100%;
+  border: 3.75vw @border-color solid;
+  @media only screen and (min-width: 630px){
+    border: 3.75vh @border-color solid;
+  }
+
+  overflow: hidden;
+  
+  position: relative;
+  top: -79%;
+  color: #304c55;
+  
+  .game-title {
+    background-color: @game-control-header;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-shadow: 0 0 6px rgba(0,0,0,0.1);
+    padding: 10% 0 5% 0;
+
+    font-family: "Roboto", sans-serif;
+    font-size: 40px;
+    color: #FFFBE6;
+  }
+  
+  .controls-row-1 {
+    display: inline-block;
+    width: 215px;
+    margin: 0 auto;
+    
+
+    .counter-container {
+      float: left;
+      margin-left: 10%;
+      margin-top: 6%;
+
+      .counter-display {
+        font-family: "Roboto Light", sans-serif;
+        font-size: 26px;
+        width: 35px;
+        padding: 0;
+        margin: 0;
+        margin-top: 10%;
+        box-shadow: 0 0 6px rgba(0,0,0,.2) inset;
+
+        text-align: center;
+        border: 3px @border-color solid;
+        padding: 0 7px;
+        border-radius: 6px;
+        background-color: #E0DAAF;
+        color: #214258;
+      }
+
+      .counter-label {
+        font-family: "Roboto Light", sans-serif;
+        padding: 0;
+        margin: 0;
+        font-size: 16px;
+      }
+    }
+
+    .button-label {
+      margin: 0;
+      padding: 0;
+      font-family: "Roboto Light", sans-serif;
+      font-size: 16px;
+    }
+
+    @button-border-color: darken(#707B8A, -5%);
+    .button-container {
+      float: left;
+      margin: 7% 7%;
+      margin-bottom: 0;
+
+      button {
+        width: 30px;
+        height: 30px;
+        border: 4px @button-border-color solid;
+        border-radius: 100%;
+      }
+    }
+
+    #start-button {
+      margin-left: 10%;
+      margin-top: 40%;
+      background-color: #F05F60;
+    }
+    
+    #strict-indicator {
+      width: 8px;
+      height: 8px;
+      transform: translateX(-4px) translateY(-3px);
+      background-color: #D9B8B8;
+      border-radius: 100%;
+      border: 1px @button-border-color solid;
+
+    }
+
+    #strict-button {
+      background-color: #EFB04C;
+    }
+  }
+  
+  .power-switch {
+    margin: 0;
+    padding: 0;
+    
+    
+    .label {
+      font-family: "Roboto Light", sans-serif;
+      font-size: 15px;
+      display: inline-block;
+      line-height: 10px;
+    }
+    
+    /* The switch - the box around the slider */
+    // Switch credit -> https://www.w3schools.com/howto/howto_css_switch.asp
+    .switch {
+      position: relative;
+      display: inline-block;
+      top: 9px;
+      margin: 0 4px;
+      width: 55px;
+      height: 30px;
+    }
+
+    /* Hide default HTML checkbox */
+    .switch input {display:none;}
+
+    /* The slider */
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #2A2F35;
+      border-radius: 6px;
+      -webkit-transition: .1s;
+      transition: .1s;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 21px;
+      width: 25px;
+      left: 4px;
+      bottom: 4px;
+      background-color: #2996BD;
+      border-radius: 6px;
+      -webkit-transition: .1s;
+      transition: .1s;
+    }
+
+    input:focus + .slider {
+      box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked + .slider:before {
+      -webkit-transform: translateX(22px);
+      -ms-transform: translateX(22px);
+      transform: translateX(22px);
+    }
+    
+  }
+  
+}
